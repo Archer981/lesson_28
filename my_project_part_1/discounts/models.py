@@ -3,8 +3,8 @@ from django.db import models
 
 
 class Tour(models.Model):
-    name = models.CharField(max_length=200)
-    author = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, null=True)
+    author = models.CharField(max_length=200, null=True)
 
 
 class Discount(models.Model):
@@ -14,6 +14,11 @@ class Discount(models.Model):
     CATEGORIES = [(PROMO, "Промокод"), (CAMPAIGN, "Акция"), (DISCOUNT, "Скидка")]
 
     category = models.CharField(max_length=8, choices=CATEGORIES, default=PROMO)
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, null=True)
+    discount = models.PositiveSmallIntegerField(null=True)
+    code = models.CharField(max_length=20, default='skypro')
+    starts_at = models.DateTimeField(null=True)
+    ends_at = models.DateTimeField(null=True)
     # TODO дополните модель данными в соответствии со спецификацией
 
 

@@ -35,3 +35,11 @@ class Tour(models.Model):
     # TODO end_point Точка завершения  Короткий текст (20)
     # TODO children_ok Можно детям или с детьми  Логическое, по умолчанию true
     # TODO group_size  Размер группы Маленькое число
+    guide = models.ForeignKey(Guide, on_delete=models.CASCADE, null=True)
+    attractions = models.ManyToManyField(Attractions)
+    language = models.CharField(max_length=2, choices=LANGUAGES, default='ru')
+    price_rur = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+    start_point = models.CharField(max_length=20, null=True)
+    end_point = models.CharField(max_length=20, null=True)
+    children_ok = models.BooleanField(default=True)
+    group_size = models.PositiveSmallIntegerField(null=True)

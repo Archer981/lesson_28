@@ -19,4 +19,9 @@ class Review(models.Model):
     # TODO rate  Звездочки Маленькое целое число
     # TODO published_at  Время публикации  Дата и время
     # TODO is_published  Отзыв опубликован Логическое
-    pass
+    author = models.CharField(max_length=20)
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
+    content = models.TextField()
+    rate = models.SmallIntegerField()
+    published_at = models.DateTimeField(auto_now_add=True, null=True)
+    is_published = models.BooleanField(default=False)

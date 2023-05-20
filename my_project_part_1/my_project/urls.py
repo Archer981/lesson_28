@@ -5,8 +5,8 @@ from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("discounts.urls")),
-    path("", include("along_neva_channels.urls")),
+    path("discount/", include("discounts.urls")),
+    path("neva_tours/", include("along_neva_channels.urls")),
     path("", include("feedback.urls")),
     path("", include("forgotten.urls")),
     path("", include("moderation.urls")),
