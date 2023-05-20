@@ -15,7 +15,7 @@ from first_opened.models import City
 # TODO вам предстоит переработать этот CBV
 class CityListView(ListView):
     model = City
-    queryset = City.objects.all()
+    queryset = City.objects.all().order_by('-status', 'name')
 
     def get(self, request, *args, **kwargs):
         super().get(request, *args, **kwargs)
